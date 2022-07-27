@@ -1,0 +1,11 @@
+com\felipe\mckyosk\view\MainMenuView.class
+com\felipe\mckyosk\model\MealModel.class
+com\felipe\mckyosk\dao\ItemDao.class
+com\felipe\mckyosk\model\MenuItemModel.class
+com\felipe\mckyosk\view\ItemView.class
+com\felipe\mckyosk\view\McInterface.class
+com\felipe\mckyosk\controller\MainMenuController.class
+com\felipe\mckyosk\view\MainMenuView$1.class
+com\felipe\mckyosk\model\MainMenuModel.class
+com\felipe\mckyosk\view\ItemView$1.class
+com\felipe\mckyosk\enums\CategoryEnum.class
