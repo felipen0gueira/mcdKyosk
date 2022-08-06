@@ -4,6 +4,7 @@
  */
 package com.felipe.mckyosk.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,17 +14,24 @@ import java.util.List;
 public class MenuItemModel {
 
     private int itemId;
+    private int groupId;
     private String itemName;
     private List<Integer> itemCategory;
-    private String itemSize;
+
+
+    private List<ItemCustomizationModel> selectedCustomization;
+
+    private String itemSize = "";
     private float price;
 
-    public MenuItemModel(int itemId, String itemName, List<Integer> itemCategory, String itemSize, float price) {
+    public MenuItemModel(int itemId, String itemName, List<Integer> itemCategory, String itemSize, float price, int groupId) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.itemCategory = itemCategory;
         this.itemSize = itemSize;
         this.price = price;
+        this.groupId = groupId;
+        selectedCustomization = new ArrayList<>();
     }
     
     public MenuItemModel(){
@@ -98,6 +106,23 @@ public class MenuItemModel {
      */
     public void setPrice(float price) {
         this.price = price;
+    }
+    
+    
+    public List<ItemCustomizationModel> getSelectedCustomization() {
+        return selectedCustomization;
+    }
+
+    public void setSelectedCustomization(List<ItemCustomizationModel> selectedCustomization) {
+        this.selectedCustomization = selectedCustomization;
+    }
+    
+        public Integer getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(Integer groupId) {
+        this.groupId = groupId;
     }
 
 }

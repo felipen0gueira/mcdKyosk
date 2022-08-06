@@ -13,6 +13,7 @@ import com.felipe.mckyosk.view.MainMenuView;
 import java.util.Iterator;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -56,8 +57,14 @@ public class MainMenuController {
         mMenuView.getFriesSidesBtn().addActionListener(e -> setMenuByCategory(CategoryEnum.FRIES_AND_SIDES, mMenuView.getFriesSidesBtn().getText()));
         mMenuView.getDesssertsBtn().addActionListener(e -> setMenuByCategory(CategoryEnum.DESSERTS, mMenuView.getDesssertsBtn().getText()));
         mMenuView.getBreakfastBtn().addActionListener(e -> setMenuByCategory(CategoryEnum.BREAKFAST_MENU, mMenuView.getBreakfastBtn().getText()));
+        mMenuView.getLblTotal().setText("Total: €" + String.format("%.2f", OrderListController.getInstance().getTotal()));
+        mMenuView.getBtnCheckOut().addActionListener(e -> loadCheckout());
+        mMenuView.getEatIn().addActionListener(e -> OrderListController.getInstance().setOrderType(0));
+        mMenuView.getTakeAway().addActionListener(e -> OrderListController.getInstance().setOrderType(1));
+        OrderListController.getInstance().getTotal();
 
         mMenuView.setVisible(true);
+        CheckEatInOrTakeAway();
 
     }
 
@@ -83,7 +90,7 @@ public class MainMenuController {
             System.out.println("NAME " + next.getItemName());
 
             javax.swing.JButton jButton1 = new JButton();
-            String itemBtnTitle = (next.getItemSize() == null) ? next.getItemName() : next.getItemName() + " - " + next.getItemSize();
+            String itemBtnTitle = next.getItemName();
             jButton1.setText(itemBtnTitle);
             jButton1.addActionListener(e -> {
                 loadSelectedItem(next.getItemId());
@@ -104,6 +111,59 @@ public class MainMenuController {
         System.out.println(item.getItemName());
         System.out.println(item.getItemSize());
         System.out.println(item.getPrice());
+        System.out.println(item.getGroupId());
+
+        mMenuView.dispose();
+
+    }
+
+    private void loadCheckout() {
+        if (OrderListController.getInstance().getOrderList().isEmpty()) {
+            JOptionPane.showMessageDialog(mMenuView, "Your Order List is Empty!");
+        } else {
+            CheckOutController ckCrt = new CheckOutController();
+            ckCrt.initController();
+            mMenuView.dispose();
+
+        }
+    }
+
+    private void CheckEatInOrTakeAway() {
+
+        if (OrderListController.getInstance().getOrderType() == null) {
+            Object[] options = {"Eat In",
+                "Take Away"};
+            int n = JOptionPane.showOptionDialog(mMenuView,
+                    "Choose an option",
+                    "Order Type:",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+
+            System.out.println(n);
+            OrderListController.getInstance().setOrderType(n);
+
+            if (OrderListController.getInstance().getOrderType() == 0) {
+                mMenuView.getEatIn().setSelected(true);
+            } else {
+                mMenuView.getTakeAway().setSelected(true);
+            }
+
+            mMenuView.validate();
+            mMenuView.repaint();
+
+        } else {
+            if (OrderListController.getInstance().getOrderType() == 0) {
+                mMenuView.getEatIn().setSelected(true);
+            } else {
+                mMenuView.getTakeAway().setSelected(true);
+            }
+
+            mMenuView.validate();
+            mMenuView.repaint();
+        }
 
     }
 

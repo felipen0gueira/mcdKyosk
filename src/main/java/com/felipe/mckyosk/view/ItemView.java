@@ -4,9 +4,13 @@
  */
 package com.felipe.mckyosk.view;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JToggleButton;
 
 /**
  *
@@ -14,11 +18,92 @@ import javax.swing.JLabel;
  */
 public class ItemView extends javax.swing.JFrame {
 
+    public ButtonGroup getBtnGrpSize() {
+        return btnGrpSize;
+    }
+
+    public void setBtnGrpSize(ButtonGroup btnGrpSize) {
+        this.btnGrpSize = btnGrpSize;
+    }
+
+    public ButtonGroup getBtnGrpType() {
+        return btnGrpType;
+    }
+
+    public void setBtnGrpType(ButtonGroup btnGrpType) {
+        this.btnGrpType = btnGrpType;
+    }
+
+    public JLabel getLblTotal1() {
+        return lblTotal1;
+    }
+
+    public void setLblTotal1(JLabel lblTotal1) {
+        this.lblTotal1 = lblTotal1;
+    }
+
+    public JPanel getPnlSize() {
+        return pnlSize;
+    }
+
+    public void setPnlSize(JPanel pnlSize) {
+        this.pnlSize = pnlSize;
+    }
+
+    public JPanel getPnlType() {
+        return pnlType;
+    }
+
+    public JRadioButton getRdBtnLg() {
+        return rdBtnLg;
+    }
+
+    public void setRdBtnLg(JRadioButton rdBtnLg) {
+        this.rdBtnLg = rdBtnLg;
+    }
+
+    public JRadioButton getRdBtnMd() {
+        return rdBtnMd;
+    }
+
+    public void setRdBtnMd(JRadioButton rdBtnMd) {
+        this.rdBtnMd = rdBtnMd;
+    }
+
+    public JRadioButton getRdBtnSml() {
+        return rdBtnSml;
+    }
+
+    public void setRdBtnSml(JRadioButton rdBtnSml) {
+        this.rdBtnSml = rdBtnSml;
+    }
+
+    public void setPnlType(JPanel pnlType) {
+        this.pnlType = pnlType;
+    }
+
+    public JRadioButton getRdBtnMeal() {
+        return rdBtnMeal;
+    }
+
+    public void setRdBtnMeal(JRadioButton rdBtnMeal) {
+        this.rdBtnMeal = rdBtnMeal;
+    }
+
+    public JRadioButton getRdBtnOnlyBurger() {
+        return rdBtnOnlyBurger;
+    }
+
+    public void setRdBtnOnlyBurger(JRadioButton rdBtnOnlyBurger) {
+        this.rdBtnOnlyBurger = rdBtnOnlyBurger;
+    }
+
     /**
      * Creates new form NewJFrame
      */
     public ItemView() {
         initComponents();
+        pnlCustom.setVisible(false);
     }
 
     /**
@@ -31,15 +116,15 @@ public class ItemView extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
+        btnGrpType = new javax.swing.ButtonGroup();
+        btnGrpSize = new javax.swing.ButtonGroup();
         jPanel2 = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         btnAddOrder = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
-        btnCustomize = new javax.swing.JButton();
         btnMinus = new javax.swing.JButton();
         btbPlus = new javax.swing.JButton();
         lblNumItem = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
         lblPrice = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
         cbDrink = new javax.swing.JComboBox<>();
@@ -47,6 +132,15 @@ public class ItemView extends javax.swing.JFrame {
         lblDrink = new javax.swing.JLabel();
         lblSide = new javax.swing.JLabel();
         lblTotal1 = new javax.swing.JLabel();
+        btnCustomize = new javax.swing.JToggleButton();
+        pnlCustom = new javax.swing.JPanel();
+        pnlType = new javax.swing.JPanel();
+        rdBtnMeal = new javax.swing.JRadioButton();
+        rdBtnOnlyBurger = new javax.swing.JRadioButton();
+        pnlSize = new javax.swing.JPanel();
+        rdBtnSml = new javax.swing.JRadioButton();
+        rdBtnMd = new javax.swing.JRadioButton();
+        rdBtnLg = new javax.swing.JRadioButton();
 
         jLabel2.setText("jLabel2");
 
@@ -61,9 +155,6 @@ public class ItemView extends javax.swing.JFrame {
         btnCancel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnCancel.setText("Cancel");
 
-        btnCustomize.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnCustomize.setText("Customize");
-
         btnMinus.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnMinus.setText("-");
 
@@ -72,17 +163,6 @@ public class ItemView extends javax.swing.JFrame {
 
         lblNumItem.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblNumItem.setText("1");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 156, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 129, Short.MAX_VALUE)
-        );
 
         lblPrice.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblPrice.setText("€0");
@@ -105,58 +185,129 @@ public class ItemView extends javax.swing.JFrame {
         lblTotal1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTotal1.setText("Total");
 
+        btnCustomize.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnCustomize.setText("Customize");
+
+        pnlCustom.setLayout(new java.awt.GridLayout(5, 3));
+
+        btnGrpType.add(rdBtnMeal);
+        rdBtnMeal.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        rdBtnMeal.setSelected(true);
+        rdBtnMeal.setText("Meal");
+        rdBtnMeal.setVisible(false);
+
+        btnGrpType.add(rdBtnOnlyBurger);
+        rdBtnOnlyBurger.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        rdBtnOnlyBurger.setText("Only Burger");
+        rdBtnOnlyBurger.setVisible(false);
+
+        javax.swing.GroupLayout pnlTypeLayout = new javax.swing.GroupLayout(pnlType);
+        pnlType.setLayout(pnlTypeLayout);
+        pnlTypeLayout.setHorizontalGroup(
+            pnlTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTypeLayout.createSequentialGroup()
+                .addGap(145, 145, 145)
+                .addComponent(rdBtnMeal)
+                .addGap(150, 150, 150)
+                .addComponent(rdBtnOnlyBurger)
+                .addContainerGap(246, Short.MAX_VALUE))
+        );
+        pnlTypeLayout.setVerticalGroup(
+            pnlTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlTypeLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(pnlTypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rdBtnMeal)
+                    .addComponent(rdBtnOnlyBurger))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        java.awt.GridBagLayout pnlSizeLayout = new java.awt.GridBagLayout();
+        pnlSizeLayout.columnWidths = new int[] {3};
+        pnlSize.setLayout(pnlSizeLayout);
+
+        btnGrpSize.add(rdBtnSml);
+        rdBtnSml.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        rdBtnSml.setText("Small");
+        rdBtnSml.setVisible(false);
+        pnlSize.add(rdBtnSml, new java.awt.GridBagConstraints());
+
+        btnGrpSize.add(rdBtnMd);
+        rdBtnMd.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        rdBtnMd.setSelected(true);
+        rdBtnMd.setText("Medium");
+        rdBtnMd.setVisible(false);
+        pnlSize.add(rdBtnMd, new java.awt.GridBagConstraints());
+
+        btnGrpSize.add(rdBtnLg);
+        rdBtnLg.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        rdBtnLg.setText("Large");
+        rdBtnLg.setVisible(false);
+        pnlSize.add(rdBtnLg, new java.awt.GridBagConstraints());
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(186, 186, 186)
-                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(269, 269, 269)
-                        .addComponent(btnAddOrder))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(333, 333, 333)
+                        .addGap(1, 1, 1)
                         .addComponent(btnMinus)
                         .addGap(77, 77, 77)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(lblNumItem)
-                                .addGap(84, 84, 84)
-                                .addComponent(btbPlus))
-                            .addComponent(lblPrice)
-                            .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblNumItem)
+                        .addGap(84, 84, 84)
+                        .addComponent(btbPlus))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnCustomize)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(lblTotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(26, 26, 26)
+                            .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(332, 332, 332)
-                        .addComponent(lblTotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnCustomize))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(313, 313, 313)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblDrink)
                             .addComponent(lblSide))
                         .addGap(29, 29, 29)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cbSide, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbDrink, 0, 314, Short.MAX_VALUE))))
-                .addContainerGap(23, Short.MAX_VALUE))
+                            .addComponent(cbDrink, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(298, 298, 298))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(46, 46, 46)
+                        .addComponent(lblPrice))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(pnlCustom, javax.swing.GroupLayout.PREFERRED_SIZE, 768, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(pnlType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlSize, javax.swing.GroupLayout.PREFERRED_SIZE, 792, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(267, 267, 267)
+                        .addComponent(btnAddOrder)))
+                .addGap(79, 126, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblPrice)
-                .addGap(53, 53, 53)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPrice))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlSize, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbDrink, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDrink))
@@ -164,7 +315,7 @@ public class ItemView extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cbSide, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblSide))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnMinus)
                     .addComponent(btbPlus)
@@ -173,12 +324,14 @@ public class ItemView extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTotal)
                     .addComponent(lblTotal1))
-                .addGap(18, 18, 18)
-                .addComponent(btnCustomize, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCustomize)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlCustom, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
         );
 
@@ -244,12 +397,13 @@ public class ItemView extends javax.swing.JFrame {
     private javax.swing.JButton btbPlus;
     private javax.swing.JButton btnAddOrder;
     private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnCustomize;
+    private javax.swing.JToggleButton btnCustomize;
+    private javax.swing.ButtonGroup btnGrpSize;
+    private javax.swing.ButtonGroup btnGrpType;
     private javax.swing.JButton btnMinus;
     private javax.swing.JComboBox<String> cbDrink;
     private javax.swing.JComboBox<String> cbSide;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblDrink;
     private javax.swing.JLabel lblNumItem;
@@ -258,6 +412,14 @@ public class ItemView extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lblTotal1;
+    private javax.swing.JPanel pnlCustom;
+    private javax.swing.JPanel pnlSize;
+    private javax.swing.JPanel pnlType;
+    private javax.swing.JRadioButton rdBtnLg;
+    private javax.swing.JRadioButton rdBtnMd;
+    private javax.swing.JRadioButton rdBtnMeal;
+    private javax.swing.JRadioButton rdBtnOnlyBurger;
+    private javax.swing.JRadioButton rdBtnSml;
     // End of variables declaration//GEN-END:variables
 
     public JButton getBtbPlus() {
@@ -284,12 +446,20 @@ public class ItemView extends javax.swing.JFrame {
         this.btnCancel = btnCancel;
     }
 
-    public JButton getBtnCustomize() {
+    public JToggleButton getBtnCustomize() {
         return btnCustomize;
     }
 
-    public void setBtnCustomize(JButton btnCustomize) {
+    public void setBtnCustomize(JToggleButton btnCustomize) {
         this.btnCustomize = btnCustomize;
+    }
+
+    public JPanel getPnlCustom() {
+        return pnlCustom;
+    }
+
+    public void setPnlCustom(JPanel pnlCustom) {
+        this.pnlCustom = pnlCustom;
     }
 
     public JButton getBtnMinus() {

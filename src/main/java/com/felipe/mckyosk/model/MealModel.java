@@ -12,22 +12,19 @@ import java.util.List;
  * @author felip
  */
 public class MealModel extends MenuItemModel {
-    private List<MenuItemModel> result = new ArrayList<>();
 
-    public MealModel(int itemId, String itemName, List<Integer> itemCategory, String itemSize, float price) {
-        super(itemId, itemName, itemCategory, itemSize, price);
+    private List<MenuItemModel> mealAditionalItems = new ArrayList<>();
+
+    public MealModel(int itemId, String itemName, List<Integer> itemCategory, String itemSize, float price, int groupId) {
+        super(itemId, itemName, itemCategory, itemSize, price, groupId);
     }
 
-
- 
-
-    public List<MenuItemModel> getResult() {
-        return result;
+    public List<MenuItemModel> getMealAditionalItems() {
+        return mealAditionalItems;
     }
 
-    public void setResult(List<MenuItemModel> result) {
-        this.result = result;
+    public void setMealAditionalItems(List<MenuItemModel> result) {
+        this.mealAditionalItems = result;
     }
-    
-    
+
 }

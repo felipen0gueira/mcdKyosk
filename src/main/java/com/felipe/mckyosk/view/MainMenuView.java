@@ -4,13 +4,23 @@
  */
 package com.felipe.mckyosk.view;
 
+import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 
 /**
  *
  * @author felip
  */
 public class MainMenuView extends javax.swing.JFrame {
+
+    public JButton getBtnCheckOut() {
+        return btnCheckOut;
+    }
+
+    public void setBtnCheckOut(JButton btnCheckOut) {
+        this.btnCheckOut = btnCheckOut;
+    }
 
     /**
      * Creates new form NewJFrame
@@ -29,6 +39,7 @@ public class MainMenuView extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel2 = new javax.swing.JLabel();
+        orderTypeGroup = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         categoryPanel = new javax.swing.JPanel();
         wNewBtn = new javax.swing.JButton();
@@ -46,6 +57,10 @@ public class MainMenuView extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         titleLabel = new javax.swing.JLabel();
         centralMenuPanel = new javax.swing.JPanel();
+        btnCheckOut = new javax.swing.JButton();
+        lblTotal = new javax.swing.JLabel();
+        eatIn = new javax.swing.JRadioButton();
+        takeAway = new javax.swing.JRadioButton();
 
         jLabel2.setText("jLabel2");
 
@@ -96,7 +111,7 @@ public class MainMenuView extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 336, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -109,6 +124,25 @@ public class MainMenuView extends javax.swing.JFrame {
 
         centralMenuPanel.setLayout(new java.awt.GridLayout(5, 4, 15, 15));
 
+        btnCheckOut.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        btnCheckOut.setText("Check Out");
+
+        lblTotal.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblTotal.setText("Total:");
+
+        orderTypeGroup.add(eatIn);
+        eatIn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        eatIn.setText("Eat In");
+
+        orderTypeGroup.add(takeAway);
+        takeAway.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        takeAway.setText("Take Away");
+        takeAway.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                takeAwayActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -119,14 +153,37 @@ public class MainMenuView extends javax.swing.JFrame {
                     .addComponent(centralMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(eatIn)
+                    .addComponent(takeAway))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
+                .addComponent(btnCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(94, 94, 94))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(centralMenuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(centralMenuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnCheckOut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(lblTotal)
+                                    .addComponent(takeAway))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(eatIn)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -141,7 +198,7 @@ public class MainMenuView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -149,6 +206,18 @@ public class MainMenuView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void takeAwayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_takeAwayActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_takeAwayActionPerformed
+
+    public JLabel getLblTotal() {
+        return lblTotal;
+    }
+
+    public void setLblTotal(JLabel lblTotal) {
+        this.lblTotal = lblTotal;
+    }
 
     /**
      * @param args the command line arguments
@@ -190,19 +259,24 @@ public class MainMenuView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton breakfastBtn;
+    private javax.swing.JButton btnCheckOut;
     private javax.swing.JButton burgersBtn;
     private javax.swing.JPanel categoryPanel;
     private javax.swing.JPanel centralMenuPanel;
     private javax.swing.JButton desssertsBtn;
+    private javax.swing.JRadioButton eatIn;
     private javax.swing.JButton friesSidesBtn;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblTotal;
     private javax.swing.JButton mcCafeBtn;
     private javax.swing.JButton measlBtn;
     private javax.swing.JButton milkShakeCDrinksBtn;
+    private javax.swing.ButtonGroup orderTypeGroup;
     private javax.swing.JButton reducedPriceBtn;
+    private javax.swing.JRadioButton takeAway;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JButton vegetarianBtn;
     private javax.swing.JButton wNewBtn;
@@ -214,6 +288,22 @@ public class MainMenuView extends javax.swing.JFrame {
      */
     public javax.swing.JButton getBreakfastBtn() {
         return breakfastBtn;
+    }
+
+    public JRadioButton getEatIn() {
+        return eatIn;
+    }
+
+    public void setEatIn(JRadioButton eatIn) {
+        this.eatIn = eatIn;
+    }
+
+    public JRadioButton getTakeAway() {
+        return takeAway;
+    }
+
+    public void setTakeAway(JRadioButton takeAway) {
+        this.takeAway = takeAway;
     }
 
     /**
