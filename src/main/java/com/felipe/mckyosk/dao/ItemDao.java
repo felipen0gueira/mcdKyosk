@@ -4,7 +4,7 @@
  */
 package com.felipe.mckyosk.dao;
 
-import com.felipe.mckyosk.controller.OrderListController;
+import com.felipe.mckyosk.controller.OrderListSingleton;
 import com.felipe.mckyosk.enums.CategoryEnum;
 import com.felipe.mckyosk.model.ItemCustomizationModel;
 import com.felipe.mckyosk.model.MealModel;
@@ -245,7 +245,7 @@ public class ItemDao {
 
     public int insertOrder() {
         String sql = "INSERT INTO customer_order (is_eat_in, order_status, total) values (?, ?, ?)";
-        List<Object[]> orderList = OrderListController.getInstance().getOrderList();
+        List<Object[]> orderList = OrderListSingleton.getInstance().getOrderList();
 
         int ordId = -1;
 
@@ -253,9 +253,9 @@ public class ItemDao {
                  Connection conn = this.connect(); //Statement stmt = conn.createStatement();  
                   PreparedStatement pstmt = conn.prepareStatement(sql);) {
 
-            pstmt.setBoolean(1, OrderListController.getInstance().getOrderType() == 0);
+            pstmt.setBoolean(1, OrderListSingleton.getInstance().getOrderType() == 0);
             pstmt.setString(2, "order_status");
-            pstmt.setFloat(3, OrderListController.getInstance().getTotal());
+            pstmt.setFloat(3, OrderListSingleton.getInstance().getTotal());
 
             pstmt.executeUpdate();
 

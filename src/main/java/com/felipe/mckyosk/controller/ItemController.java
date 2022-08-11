@@ -72,7 +72,7 @@ public class ItemController {
 //            MenuItemModel nonSize = itemsRangeOption.stream().filter(p -> p.getItemSize().isEmpty()).findFirst().get();
         }
 
-        itemView.getLblTotal().setText("€" + String.format("%.2f", OrderListController.getInstance().getTotal()));
+        itemView.getLblTotal().setText("€" + String.format("%.2f", OrderListSingleton.getInstance().getTotal()));
 
         if (mItemModel instanceof MealModel) {
             loadMealItem();
@@ -320,10 +320,10 @@ public class ItemController {
 
             float price = mItemModel.getPrice();
             int quantity = Integer.valueOf(itemView.getLblNumItem().getText());
-            OrderListController.getInstance().sumTotal(price * quantity);
+            OrderListSingleton.getInstance().sumTotal(price * quantity);
 
-            OrderListController.getInstance().addItemToOrder(quantity, mItemModel);
-            itemView.getLblTotal().setText("€" + String.format("%.2f", OrderListController.getInstance().getTotal()));
+            OrderListSingleton.getInstance().addItemToOrder(quantity, mItemModel);
+            itemView.getLblTotal().setText("€" + String.format("%.2f", OrderListSingleton.getInstance().getTotal()));
             JOptionPane.showMessageDialog(itemView, "Item Added to Order!");
             MainMenuView view = new MainMenuView();
             MainMenuModel model = new MainMenuModel();

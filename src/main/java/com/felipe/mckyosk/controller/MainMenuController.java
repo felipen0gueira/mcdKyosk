@@ -57,14 +57,15 @@ public class MainMenuController {
         mMenuView.getFriesSidesBtn().addActionListener(e -> setMenuByCategory(CategoryEnum.FRIES_AND_SIDES, mMenuView.getFriesSidesBtn().getText()));
         mMenuView.getDesssertsBtn().addActionListener(e -> setMenuByCategory(CategoryEnum.DESSERTS, mMenuView.getDesssertsBtn().getText()));
         mMenuView.getBreakfastBtn().addActionListener(e -> setMenuByCategory(CategoryEnum.BREAKFAST_MENU, mMenuView.getBreakfastBtn().getText()));
-        mMenuView.getLblTotal().setText("Total: €" + String.format("%.2f", OrderListController.getInstance().getTotal()));
+        mMenuView.getLblTotal().setText("Total: €" + String.format("%.2f", OrderListSingleton.getInstance().getTotal()));
         mMenuView.getBtnCheckOut().addActionListener(e -> loadCheckout());
-        mMenuView.getEatIn().addActionListener(e -> OrderListController.getInstance().setOrderType(0));
-        mMenuView.getTakeAway().addActionListener(e -> OrderListController.getInstance().setOrderType(1));
-        OrderListController.getInstance().getTotal();
+        mMenuView.getEatIn().addActionListener(e -> OrderListSingleton.getInstance().setOrderType(0));
+        mMenuView.getTakeAway().addActionListener(e -> OrderListSingleton.getInstance().setOrderType(1));
+        OrderListSingleton.getInstance().getTotal();
 
         mMenuView.setVisible(true);
         CheckEatInOrTakeAway();
+        mMenuView.getwNewBtn().doClick();
 
     }
 
@@ -118,7 +119,7 @@ public class MainMenuController {
     }
 
     private void loadCheckout() {
-        if (OrderListController.getInstance().getOrderList().isEmpty()) {
+        if (OrderListSingleton.getInstance().getOrderList().isEmpty()) {
             JOptionPane.showMessageDialog(mMenuView, "Your Order List is Empty!");
         } else {
             CheckOutController ckCrt = new CheckOutController();
@@ -130,7 +131,7 @@ public class MainMenuController {
 
     private void CheckEatInOrTakeAway() {
 
-        if (OrderListController.getInstance().getOrderType() == null) {
+        if (OrderListSingleton.getInstance().getOrderType() == null) {
             Object[] options = {"Eat In",
                 "Take Away"};
             int n = JOptionPane.showOptionDialog(mMenuView,
@@ -143,9 +144,9 @@ public class MainMenuController {
                     options[0]);
 
             System.out.println(n);
-            OrderListController.getInstance().setOrderType(n);
+            OrderListSingleton.getInstance().setOrderType(n);
 
-            if (OrderListController.getInstance().getOrderType() == 0) {
+            if (OrderListSingleton.getInstance().getOrderType() == 0) {
                 mMenuView.getEatIn().setSelected(true);
             } else {
                 mMenuView.getTakeAway().setSelected(true);
@@ -155,7 +156,7 @@ public class MainMenuController {
             mMenuView.repaint();
 
         } else {
-            if (OrderListController.getInstance().getOrderType() == 0) {
+            if (OrderListSingleton.getInstance().getOrderType() == 0) {
                 mMenuView.getEatIn().setSelected(true);
             } else {
                 mMenuView.getTakeAway().setSelected(true);

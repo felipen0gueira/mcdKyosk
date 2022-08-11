@@ -24,7 +24,7 @@ public class PaymentController {
     }
 
     public void initController() {
-        pView.getLblTotal().setText("Total: €" + String.format("%.2f", OrderListController.getInstance().getTotal()));
+        pView.getLblTotal().setText("Total: €" + String.format("%.2f", OrderListSingleton.getInstance().getTotal()));
 
         pView.getBtn0().addActionListener(e -> pView.getLblPin().setText(pView.getLblPin().getText() + "#"));
         pView.getBtn1().addActionListener(e -> pView.getLblPin().setText(pView.getLblPin().getText() + "#"));
@@ -55,7 +55,7 @@ public class PaymentController {
         //print number
         //send back to the main menu
 
-        OrderListController.resetInstance();
+        OrderListSingleton.resetInstance();
 
         MainMenuView view = new MainMenuView();
         MainMenuModel model = new MainMenuModel();
@@ -66,7 +66,7 @@ public class PaymentController {
     }
 
     public void cancelOrder() {
-        OrderListController.resetInstance();
+        OrderListSingleton.resetInstance();
 
         MainMenuView view = new MainMenuView();
         MainMenuModel model = new MainMenuModel();

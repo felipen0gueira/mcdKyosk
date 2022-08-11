@@ -29,7 +29,7 @@ public class CheckOutController {
     }
 
     public void initController() {
-        ckoutView.getLblTotal().setText("Total: €" + String.format("%.2f", OrderListController.getInstance().getTotal()));
+        ckoutView.getLblTotal().setText("Total: €" + String.format("%.2f", OrderListSingleton.getInstance().getTotal()));
         ckoutView.getBtnDelete().addActionListener(e -> removeSelectedItem());
         ckoutView.getBtnMainMenu().addActionListener(e -> returnMainMenu());
         ckoutView.getBtnCancel().addActionListener(e -> cancelOrder());
@@ -47,7 +47,7 @@ public class CheckOutController {
     }
 
     private void initPayment() {
-        if (OrderListController.getInstance().getOrderList().isEmpty()) {
+        if (OrderListSingleton.getInstance().getOrderList().isEmpty()) {
             JOptionPane.showMessageDialog(ckoutView, "Your Order List is Empty!");
         } else {
             PaymentView pView = new PaymentView();
@@ -59,7 +59,7 @@ public class CheckOutController {
     }
 
     private void loadList() {
-        List<Object[]> list = OrderListController.getInstance().getOrderList();
+        List<Object[]> list = OrderListSingleton.getInstance().getOrderList();
         DefaultListModel listModel = new DefaultListModel();
 
         for (Iterator<Object[]> iterator = list.iterator(); iterator.hasNext();) {
@@ -115,8 +115,8 @@ public class CheckOutController {
 
             return;
         }
-        OrderListController.getInstance().removeItem(ckoutView.getOrderList().getSelectedIndex());
-        ckoutView.getLblTotal().setText("Total: €" + String.format("%.2f", OrderListController.getInstance().getTotal()));
+        OrderListSingleton.getInstance().removeItem(ckoutView.getOrderList().getSelectedIndex());
+        ckoutView.getLblTotal().setText("Total: €" + String.format("%.2f", OrderListSingleton.getInstance().getTotal()));
         loadList();
 
         ckoutView.revalidate();
@@ -132,7 +132,7 @@ public class CheckOutController {
     }
 
     private void cancelOrder() {
-        OrderListController.resetInstance();
+        OrderListSingleton.resetInstance();
         ckoutView.dispose();
         MainMenuView view = new MainMenuView();
         MainMenuModel model = new MainMenuModel();
@@ -154,7 +154,7 @@ public class CheckOutController {
 
         ckoutView.getPnlEdt().setVisible(true);
         edtItemIndex = ckoutView.getOrderList().getSelectedIndex();
-        Object[] selectedItem = OrderListController.getInstance().getOrderList().get(ckoutView.getOrderList().getSelectedIndex());
+        Object[] selectedItem = OrderListSingleton.getInstance().getOrderList().get(ckoutView.getOrderList().getSelectedIndex());
 
         int quantity = (int) selectedItem[0];
         MenuItemModel item = (MenuItemModel) selectedItem[1];
@@ -185,21 +185,21 @@ public class CheckOutController {
 
     private void applyEdition() {
 
-        Object[] selectedItem = OrderListController.getInstance().getOrderList().get(ckoutView.getOrderList().getSelectedIndex());
+        Object[] selectedItem = OrderListSingleton.getInstance().getOrderList().get(ckoutView.getOrderList().getSelectedIndex());
         MenuItemModel item = (MenuItemModel) selectedItem[1];
 
         int itemOldQuant = (int) selectedItem[0];
 
         int itemNewQuant = Integer.valueOf(ckoutView.getLblNumItem().getText());
 
-        OrderListController.getInstance().removeItemTotal(itemOldQuant * item.getPrice());
+        OrderListSingleton.getInstance().removeItemTotal(itemOldQuant * item.getPrice());
 
         selectedItem[0] = Integer.valueOf(ckoutView.getLblNumItem().getText());
-        OrderListController.getInstance().getOrderList().set(edtItemIndex, selectedItem);
-        OrderListController.getInstance().sumTotal(itemNewQuant * item.getPrice());
+        OrderListSingleton.getInstance().getOrderList().set(edtItemIndex, selectedItem);
+        OrderListSingleton.getInstance().sumTotal(itemNewQuant * item.getPrice());
 
         ckoutView.getPnlEdt().setVisible(false);
-        ckoutView.getLblTotal().setText("Total: €" + String.format("%.2f", OrderListController.getInstance().getTotal()));
+        ckoutView.getLblTotal().setText("Total: €" + String.format("%.2f", OrderListSingleton.getInstance().getTotal()));
 
         edtItemIndex = -1;
 
